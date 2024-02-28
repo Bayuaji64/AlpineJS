@@ -7,6 +7,7 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<script src="js/cat_data.js"></script>
     <link rel="icon" type="image/png" href="../favicon_alpine_course.png"/>
     <style>
         [x-cloak] { display: none !important; }
@@ -37,12 +38,13 @@
                 <!-- Cats 1 -->
                 <section
                 x-data="dynamicTabs()"
+				x-init="myTabs = cat_1"
                 x-cloak
                 class="mt-8 h-48">
                     <template x-for="(myTab, index) in myTabs">
                         <span 
                         x-text="myTab.title" 
-                        @click="tab=index" :class="tab == index ? tabClasses + tabHiColor : tabClasses + tabNormalColors">Tab 1</span>
+                        @click="tab=index; myTabs = cat_1" :class="tab == index ? tabClasses + tabHiColor : tabClasses + tabNormalColors">Tab 1</span>
                     </template>
 
                     <template x-for="(myTab, index) in myTabs">
@@ -57,11 +59,12 @@
                 <section
                 x-data="dynamicTabs()"
                 x-cloak
+				x-init="myTabs = cat_2"
                 class="mt-8">
                     <template x-for="(myTab, index) in myTabs">
                         <span 
                         x-text="myTab.title" 
-                        @click="tab=index" :class="tab == index ? tabClasses + tabHiColor : tabClasses + tabNormalColors">Tab 1</span>
+                        @click="tab=index; myTabs = cat_2" :class="tab == index ? tabClasses + tabHiColor : tabClasses + tabNormalColors">Tab 1</span>
                     </template>
 
                     <template x-for="(myTab, index) in myTabs">

@@ -41,29 +41,137 @@
                 
                 <!-- Example 1: Simple Array (one dimensional) -->
                 <h3>Example 1: Correct usage with <b>only one child</b> in template</h2>
-                <section></section>
+                <section x-data="{ names: ['Tom','Sarah','Kevin']}">
+
+					<template x-for="name in names">
+						<div x-text="name"></div>
+
+
+					</template>
+				
+				</section>
     
                 <!-- Example 2: Using <span> and <br> -->
                 <!-- This one does NOT work correctly (only one element within template allowed) -->
                 <h3>Example 2: Incorrect because <b>2 parallel children</b> in template</h2>
-                <section></section>
+					<section x-data="{ names: ['Tom','Sarah','Kevin']}">
+
+						<template x-for="name in names">
+							<span x-text="name"></span>
+	
+	
+						</template>
+					
+					</section>
 
                 <!-- Example 4: Using surrounding div -->
                 <!-- This one does NOT work correctly (only one element within template allowed) -->
                 <h3>Example 3: <b>Correction</b> of example 2 with surrounding div</h2>
-                <section></section>
+
+
+					<section x-data="{ names: ['Tom','Sarah','Kevin']}">
+
+						<template x-for="name in names">
+
+							<section>
+							<span x-text="name"></span>
+							</section>
+	
+	
+						</template>
+					
+					</section>
+              
 
                 <!-- Example 4: Multidimensional data with inline data -->
                 <h3>Example 4: Multidimensional data with <b>inline data</b></h2>
-                <section></section>
+                <section x-data="{
+					persons: [
+						{
+							name: 'Tom',
+							age: 40,
+						},
+						{
+							name: 'Sarah',
+							age: 20,
+						},
+						{
+							name: 'Kevin',
+							age: 30,
+						},
+					],
+				}">
+
+				<template x-for="person in persons">
+					<div>
+
+						Name: <span x-text="person.name"></span>,
+						Age: <span x-text="person.age"></span><br>
+
+
+					</div>
+				</template>
+				
+			
+			
+			</section>
 
                 <!-- Example 5: Multidimensional data with inline data -->
                 <h3>Example 5: Multidimensional data with <b>outsourced data</b></h2>
-                <section></section>
+
+					<script>
+
+					let personsOutsourced = [
+						{
+							name: 'Tom',
+							age: 40,
+						},
+						{
+							name: 'Sarah',
+							age: 20,
+						},
+						{
+							name: 'Kevin',
+							age: 30,
+						},
+					]
+
+					</script>
+                <section x-data="{persons : personsOutsourced}">
+
+
+					<template x-for="person in persons">
+						<div>
+	
+							Name: <span x-text="person.name"></span>,
+							Age: <span x-text="person.age"></span><br>
+	
+	
+						</div>
+					</template>
+					
+
+
+				</section>
 
                 <!-- Example 6: Data from another file -->
                 <h3>Example 6: Data from <b>another file</b></b></h2>
-                <section></section>                  
+					<section x-data="{persons : personsFromFile}">
+
+
+						<template x-for="person in persons">
+							<div>
+		
+								Name: <span x-text="person.name"></span>,
+								Age: <span x-text="person.age"></span><br>
+		
+		
+							</div>
+						</template>
+						
+	
+	
+					</section>               
 
 
             </div>
